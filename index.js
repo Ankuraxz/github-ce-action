@@ -10,7 +10,7 @@ async function run() {
 
     // Get the event payload
     const payload = github.context.payload;
-    core.info(payload);
+    core.info(JSON.stringify(payload, null, 2));
 
     // Get an Octokit client and pass in our token
 
