@@ -7,6 +7,8 @@ async function run() {
   try {
     // Get the event payload
 
+    // Get an Octokit client and pass in our token
+
     // Write back a comment on the labeled issue
 
   } catch (error) {
