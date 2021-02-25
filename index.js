@@ -11,10 +11,23 @@ async function run() {
     // Get the event payload
     const payload = github.context.payload;
     core.info(JSON.stringify(payload, null, 2));
+    const owner = payload.repository.owner.login;
+    const repo = payload.repository.name;
+    const issueNumber = payload.issue.number;
+    const sender = payload.sender.login;
 
+    const body = `Hey ${sender}. Why you label me?
+
+    ![](https://media.giphy.com/media/DfTZWmFpLx3os/source.gif)`
     // Get an Octokit client and pass in our token
+    const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 
-    // Write back a comment on the labeled issue
+    await octokit.issues.createComment({
+      owner,
+      repo,
+      issue_number: issueNumber,
+      body
+    });
 
   } catch (error) {
     core.setFailed(error.message);
