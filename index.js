@@ -16,9 +16,9 @@ async function run() {
     const issueNumber = payload.issue.number;
     const sender = payload.sender.login;
 
-    const body = `Hey ${sender}. Why you label me?
-
-    ![](https://media.giphy.com/media/DfTZWmFpLx3os/source.gif)`
+    const body = `Hey ${sender}. Why you label me?` +
+      '\n\n' +
+      '![](https://media.giphy.com/media/DfTZWmFpLx3os/source.gif)';
     // Get an Octokit client and pass in our token
     const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 
